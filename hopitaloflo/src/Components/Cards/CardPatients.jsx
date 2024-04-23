@@ -1,27 +1,32 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import { useBeds } from '../../Controllers/GetBedByPatient';
 
-const CardPatients = ({patients}) => {
+const CardPatients = ({ patient }) => {
+
+    const bed = useBeds(patient.idPatient);
+
     return (
-            <Row className="d-flex flex-wrap justify-content-center">
-                {patients.map((patient, index) => (
-                    <Card key={index} style={{ width: '25rem' }} className="m-2 mb-5 mt-3">
+                <Card style={{ width: '25rem' }} className="m-2 mb-5 mt-3 me-5 mx-5">
                     <Card.Body>
-                        <Card.Title>{patient.lastName} - {patient.firstName}</Card.Title>
-                        <Card.Text>
+                        {/* setPatientId lors du rendu du patient */}
+                        <Card.Title className='mb-4'>{patient.lastName} - {patient.firstName}</Card.Title>
+                        <Card.Text className='mb-4'>
                             Date de naissance: {patient.birthdate}
                         </Card.Text>
-                        <Card.Text>
-                            Numéro de sécurité social: {patient.socialSecurityNumber}
+                        <Card.Text className='mb-4'>
+                            Numéro de sécurité sociale: {patient.socialSecurityNumber}
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+
+                            {bed.room && bed.room.service && (
+                                <Card.Text>
+                                    Service: {bed.room.service.name}
+                                </Card.Text>
+                            )}
+                        
                     </Card.Body>
                 </Card>
-                ))}
-                
-            </Row>
     );
 };
 

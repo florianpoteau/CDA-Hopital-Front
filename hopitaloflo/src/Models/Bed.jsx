@@ -5,3 +5,5 @@ class Bed {
         this.room = room;
     }
 }
+
+export default Bed;
