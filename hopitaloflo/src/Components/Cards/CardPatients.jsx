@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import { useBeds } from '../../Controllers/GetBedByPatient';
+import { Link } from 'react-router-dom';
 
 const CardPatients = ({ patient }) => {
 
@@ -20,11 +21,16 @@ const CardPatients = ({ patient }) => {
                         </Card.Text>
 
                             {bed.room && bed.room.service && (
-                                <Card.Text>
+                                <Card.Text className='mb-4'>
                                     Service: {bed.room.service.name}
                                 </Card.Text>
                             )}
-                        
+                        <div className='d-flex justify-content-between'>
+                        <Link to={`/${patient.idPatient}/modifierPatient`}>
+                            <Button variant="success">Modifier</Button>
+                        </Link>
+                        <Button variant="danger">Supprimer</Button>
+                        </div>
                     </Card.Body>
                 </Card>
     );

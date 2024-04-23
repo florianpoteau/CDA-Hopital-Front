@@ -27,7 +27,7 @@ const Navigationbar = () => {
         <>
             <Navbar style={styles.navbar}>
       <Container fluid>
-        <Navbar.Brand href="#">Hopitaloflo</Navbar.Brand>
+        <Navbar.Brand href="#" className='mx-5'>Hopitaloflo</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Nav
             className="me-auto my-2 my-lg-0"
