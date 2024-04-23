@@ -2,17 +2,15 @@ import React from 'react';
 import Navigationbar from '../Components/Navbar/Navbar';
 import { Form } from 'react-bootstrap';
 import CardPatients from '../Components/Cards/CardPatients';
+import { usePatients } from '../Controllers/GetAllPatientController';
 
 const Accueil = () => {
-    const styles = {
-        formSelect: {
-            marginLeft: '2%'
-        },
-    };
+    const patients = usePatients();
+
     return (
         <>
             <Navigationbar />
-            <div className='col-md-2 col-6 mb-5' style={styles.formSelect}>
+            <div className='col-md-2 col-6 mb-5 ms-3 ps-md-5 ms-md-5'>
             <Form.Select size="md" className='mt-5'>
                 <option>Tout</option>
                 <option>Urgence</option>
@@ -22,7 +20,7 @@ const Accueil = () => {
             </div>
 
 <div className='d-flex justify-content-around'>
-    <CardPatients />
+    <CardPatients patients={patients} />
 </div>
 
 
