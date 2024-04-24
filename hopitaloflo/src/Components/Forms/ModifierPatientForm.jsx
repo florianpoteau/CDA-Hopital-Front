@@ -4,12 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PutPatientController from '../../Controllers/PutPatientController';
 
-const ModifierPatientForm = ({patient, services}) => {
+const ModifierPatientForm = ({patient}) => {
 
     const [firstName, setFirstname] = useState("");
     const [lastName, setLastname] = useState("");
     const [socialSecurityNumber, setSocialSecurityNumber] = useState("");
-    // const [selectedServiceId, setSelectedServiceId] = useState("");
 
     const putPatient = async() => {
         try {
@@ -22,7 +21,7 @@ const ModifierPatientForm = ({patient, services}) => {
             };
 
             await PutPatientController(updatedPatient);
-            // window.location.reload();
+            window.location.reload();
             console.log(updatedPatient);
             
         } catch (error) {
@@ -59,14 +58,6 @@ const ModifierPatientForm = ({patient, services}) => {
                         <Form.Control onChange={(e) => setSocialSecurityNumber(e.target.value)} className='p-3 text-secondary' type="number" placeholder={patient.socialSecurityNumber} />
                     </Form.Group>
                 </FloatingLabel>
-                    {/* <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">
-                        <Form.Label className='mt-3'></Form.Label>
-                        <Form.Select onChange={(e) => setSelectedServiceId(e.target.value)} className='p-3 text-secondary text-center'>
-                        {services.map((service, index) => (
-                            <option key={index} value={service.idService}>{service.name}</option>
-                        ))}
-                        </Form.Select>
-                    </Form.Group> */}
                 <div className='d-flex justify-content-center mt-5'>
                    <Button onClick={putPatient} className='mt-4 p-2 col-5 col-md-3 pt-3 pb-3' style={styles.button}>Modifier</Button> 
                 </div>

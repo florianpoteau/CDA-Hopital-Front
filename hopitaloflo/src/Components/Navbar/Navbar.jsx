@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { CiCirclePlus } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { FormGroup, FormControl, InputGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Navigationbar = () => {
     const styles = {
@@ -20,6 +21,9 @@ const Navigationbar = () => {
         },
         inputGroup: {
             backgroundColor: '#FFFFFF'
+        },
+        textDecoration: {
+            textDecorationColor: '#9ADFDE'
         }
     };
 
@@ -27,7 +31,10 @@ const Navigationbar = () => {
         <>
             <Navbar style={styles.navbar}>
       <Container fluid>
-        <Navbar.Brand href="#" className='mx-5'>Hopitaloflo</Navbar.Brand>
+      <Link to={"/"} style={styles.textDecoration}>
+    <Navbar.Brand href="#" className='mx-5'>Hopitaloflo</Navbar.Brand>
+</Link>
+
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Nav
             className="me-auto my-2 my-lg-0"
@@ -57,7 +64,9 @@ const Navigationbar = () => {
           >
 
           </Nav>
-          <CiCirclePlus size={50} />
+          <Link to="/ajouterPatient">
+            <CiCirclePlus style={{ color: 'black' }} size={50} />
+            </Link>
       </Container>
     </Navbar>
         </>
