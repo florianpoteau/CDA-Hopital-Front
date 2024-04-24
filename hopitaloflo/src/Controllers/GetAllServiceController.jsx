@@ -11,7 +11,6 @@ function useServices() {
             let response = await getAllServices();
             const servicesData = response.data.map((service) => new Service(service.idService, service.name));
             setServices(servicesData);
-            console.log(servicesData);
         } catch (error) {
             console.log("erreur lors du chargement des services");
         }

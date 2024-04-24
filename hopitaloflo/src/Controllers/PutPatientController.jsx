@@ -8,4 +8,4 @@ const PutPatientController = async (patient) => {
     }
  }
 
- export default PutProduitController;
+ export default PutPatientController;
