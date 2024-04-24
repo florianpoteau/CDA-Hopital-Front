@@ -4,3 +4,5 @@ class Service {
         this.name = name;
     }
 }
+
+export default Service;

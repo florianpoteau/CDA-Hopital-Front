@@ -3,7 +3,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const ModifierPatientForm = ({patient}) => {
+const ModifierPatientForm = ({patient, services}) => {
+
+    console.log(services);
 
     const styles = {
         button: {
@@ -37,9 +39,9 @@ const ModifierPatientForm = ({patient}) => {
                     <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">
                         <Form.Label className='mt-3'></Form.Label>
                         <Form.Select className='p-3 text-secondary text-center'>
-                            <option value="1">Urgence</option>
-                            <option value="2">Pédiatrie</option>
-                            <option value="3">Chirurgie</option>
+                        {services.map((service, index) => (
+                            <option key={index} value={index}>{service.name}</option>
+                        ))}
                         </Form.Select>
                     </Form.Group>
                 <div className='d-flex justify-content-center mt-5'>
