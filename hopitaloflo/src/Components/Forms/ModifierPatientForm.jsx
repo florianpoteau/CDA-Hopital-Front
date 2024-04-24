@@ -3,7 +3,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const ModifierPatientForm = () => {
+const ModifierPatientForm = ({patient}) => {
 
     const styles = {
         button: {
@@ -19,19 +19,19 @@ const ModifierPatientForm = () => {
                 <FloatingLabel controlId="floatingInputNom" label="Nom" className="text-secondary">
                     <Form.Group controlId="exampleForm.ControlInputNom">
                         <Form.Label className='mt-3'></Form.Label>
-                        <Form.Control className='p-3 text-secondary' type="text" placeholder="Poteau" />
+                        <Form.Control className='p-3 text-secondary' type="text" placeholder={patient.lastName} />
                     </Form.Group>
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingInputPrenom" label="Prénom" className="text-secondary">
                     <Form.Group controlId="exampleForm.ControlInputPrenom">
                         <Form.Label className='mt-3'></Form.Label>
-                        <Form.Control className='p-3 text-secondary' type="text" placeholder="Florian" />
+                        <Form.Control className='p-3 text-secondary' type="text" placeholder={patient.firstName} />
                     </Form.Group>
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingInputSS" label="Numéro de sécurité social" className="text-secondary">
                     <Form.Group controlId="exampleForm.ControlInputSS">
                         <Form.Label className='mt-3'></Form.Label>
-                        <Form.Control className='p-3 text-secondary' type="number" placeholder="XXXXXXXXXXX" />
+                        <Form.Control className='p-3 text-secondary' type="number" placeholder={patient.socialSecurityNumber} />
                     </Form.Group>
                 </FloatingLabel>
                     <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">

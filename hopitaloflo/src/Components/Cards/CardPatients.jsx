@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { useBeds } from '../../Controllers/GetBedByPatient';
+import { useBeds } from '../../Controllers/GetBedByPatientController';
 import { Link } from 'react-router-dom';
 
 const CardPatients = ({ patient }) => {
