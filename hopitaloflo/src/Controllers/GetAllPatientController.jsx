@@ -11,7 +11,6 @@ function usePatients() {
             let response = await getAllPatients();
             const patientsData = response.data.map((patient) => new Patient(patient.idPatient, patient.firstName, patient.lastName, patient.birthdate, patient.socialSecurityNumber));
             setPatient(patientsData);
-            console.log(patientsData);
         } catch (error) {
             console.log("erreur lors du chargement des patients");
         }
