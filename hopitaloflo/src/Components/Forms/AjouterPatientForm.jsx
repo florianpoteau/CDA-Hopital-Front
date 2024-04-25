@@ -3,6 +3,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useServices } from '../../Controllers/GetAllServiceController';
+import postPatientController from '../../Controllers/PostPatientController';
 
 const AjouterPatientForm = () => {
 
@@ -17,14 +18,14 @@ const AjouterPatientForm = () => {
     const postPatientAndAssignService = async() => {
     try {
         const updatedPatient = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "birthdate": birthdate,
-            "socialSecurityNumber": socialSecurityNumber
+            firstName: firstName,
+            lastName: lastName,
+            birthdate: birthdate,
+            socialSecurityNumber: socialSecurityNumber
         };
 
-        // await postPatientAndAssignServiceController(idService, updatedPatient);
-        // window.location.reload();
+        await postPatientController(updatedPatient);
+        window.location.reload();
         console.log(idService);
         console.log(updatedPatient);
     } catch (error) {

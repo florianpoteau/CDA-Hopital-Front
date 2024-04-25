@@ -4,7 +4,7 @@ const putPatientController = async (patient) => {
     try {
         putPatient(patient);
     } catch (error) {
-        console.log("erreur lors du chargement des produits");
+        console.log("erreur lors de la mise a jour du patient");
     }
  }
 
