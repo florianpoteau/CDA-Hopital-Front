@@ -35,8 +35,6 @@ const ModifierPatientForm = ({patient}) => {
             }
 
             console.log(updatedPatient);
-            
-            // window.location.reload();
 
         } catch (error) {
             console.log("Erreur lors de la modification du patient");
