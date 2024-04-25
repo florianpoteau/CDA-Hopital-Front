@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import putPatientController from '../../Controllers/PutPatientController';
 import { useServices } from '../../Controllers/GetAllServiceController';
 import assignServiceController from '../../Controllers/AssignServiceController';
+import unAssignServiceController from '../../Controllers/UnAssignServiceController';
 
 const ModifierPatientForm = ({patient}) => {
 
@@ -15,7 +16,7 @@ const ModifierPatientForm = ({patient}) => {
     const [lastName, setLastname] = useState("");
     const [socialSecurityNumber, setSocialSecurityNumber] = useState("");
 
-    const putPatient = async() => {
+    const putPatient = async () => {
         try {
             const updatedPatient = {
                 idPatient: patient.idPatient,
@@ -26,10 +27,17 @@ const ModifierPatientForm = ({patient}) => {
             };
 
             await putPatientController(updatedPatient);
-            await assignServiceController(idService, updatedPatient);
-            // window.location.reload();
+            
+            if (idService) {
+                await assignServiceController(idService, updatedPatient);
+            } else {
+                await unAssignServiceController(updatedPatient);
+            }
+
             console.log(updatedPatient);
             
+            // window.location.reload();
+
         } catch (error) {
             console.log("Erreur lors de la modification du patient");
         }
@@ -65,17 +73,17 @@ const ModifierPatientForm = ({patient}) => {
                     </Form.Group>
                 </FloatingLabel>
                 <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">
-                        <Form.Label className='mt-3'></Form.Label>
-                        <Form.Select onChange={(e) => setIdService(e.target.value)} className='p-3 text-secondary text-center'>
-                            {services.map((service, index) => {
-                                return <option key={index} value={service.idService}>{service.name}</option>;
-                            })}
-                        </Form.Select>
-                    </Form.Group>
+                    <Form.Label className='mt-3'></Form.Label>
+                    <Form.Select onChange={(e) => setIdService(e.target.value)} className='p-3 text-secondary text-center'>
+                        <option value={null}>Aucun service</option>
+                        {services.map((service, index) => {
+                            return <option key={index} value={service.idService}>{service.name}</option>;
+                        })}
+                    </Form.Select>
+                </Form.Group>
                 <div className='d-flex justify-content-center mt-5'>
                    <Button onClick={putPatient} className='mt-4 p-2 col-5 col-md-3 pt-3 pb-3' style={styles.button}>Modifier</Button> 
                 </div>
-                
             </Form>
         </>
     );
