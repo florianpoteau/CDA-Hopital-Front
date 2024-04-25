@@ -21,9 +21,6 @@ const Navigationbar = () => {
         },
         inputGroup: {
             backgroundColor: '#FFFFFF'
-        },
-        textDecoration: {
-            textDecorationColor: '#9ADFDE'
         }
     };
 
@@ -31,10 +28,7 @@ const Navigationbar = () => {
         <>
             <Navbar style={styles.navbar}>
       <Container fluid>
-      <Link to={"/"} style={styles.textDecoration}>
-    <Navbar.Brand href="#" className='mx-5'>Hopitaloflo</Navbar.Brand>
-</Link>
-
+    <Navbar.Brand href="/" className='mx-5'>Hopitaloflo</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Nav
             className="me-auto my-2 my-lg-0"

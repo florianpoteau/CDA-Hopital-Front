@@ -1,6 +1,6 @@
 import putPatient from "../Services/PutPatientService";
 
-const PutPatientController = async (patient) => {
+const putPatientController = async (patient) => {
     try {
         putPatient(patient);
     } catch (error) {
@@ -8,4 +8,4 @@ const PutPatientController = async (patient) => {
     }
  }
 
- export default PutPatientController;
+ export default putPatientController;
