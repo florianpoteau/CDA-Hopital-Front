@@ -25,7 +25,8 @@ const ModifierPatientForm = ({patient}) => {
                 firstName: firstName,
                 lastName: lastName,
                 birthdate: patient.birthdate,
-                socialSecurityNumber: socialSecurityNumber
+                socialSecurityNumber: socialSecurityNumber,
+                createdAt: "2024-06-07"
             };
 
             await putPatientController(updatedPatient);

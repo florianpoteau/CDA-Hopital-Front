@@ -9,7 +9,7 @@ function usePatient(idPatient) {
     const getPatientController = async () => {
         try {
             let response = await getPatient(idPatient);
-            const patientData = new Patient(response.data.idPatient, response.data.firstName, response.data.lastName, response.data.birthdate, response.data.socialSecurityNumber);
+            const patientData = new Patient(response.data.idPatient, response.data.firstName, response.data.lastName, response.data.birthdate, response.data.socialSecurityNumber, response.data.createdAt);
             setPatient(patientData);
         } catch (error) {
             console.log("erreur lors du chargement du patient" + idPatient);

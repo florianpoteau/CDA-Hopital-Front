@@ -3,8 +3,10 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import postPatientController from '../../Controllers/PostPatientController';
+import { useNavigate } from 'react-router-dom';
 
 const AjouterPatientForm = () => {
+    const navigate = useNavigate();
 
     const [firstName, setFirstname] = useState("");
     const [lastName, setLastname] = useState("");
@@ -23,7 +25,7 @@ const AjouterPatientForm = () => {
         console.log(updatedPatient);
 
         await postPatientController(updatedPatient);
-        window.location.href = "/";
+        navigate("/");
 
     } catch (error) {
         console.log("Erreur lors de l'ajout du patient");
