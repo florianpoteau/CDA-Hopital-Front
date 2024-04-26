@@ -28,7 +28,7 @@ const Navigationbar = () => {
         <>
             <Navbar style={styles.navbar}>
       <Container fluid>
-    <Navbar.Brand href="/" className='mx-5'>Hopitaloflo</Navbar.Brand>
+    <Navbar.Brand href="/" className='ms-3 ms-md-5'><strong>Hopitaloflo</strong></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Nav
             className="me-auto my-2 my-lg-0"
@@ -37,29 +37,28 @@ const Navigationbar = () => {
           </Nav>
           <Form className="d-flex" style={styles.form} >
           <div className="col-md-10">
-<FormGroup controlId="formValidationSuccess2">
-    <InputGroup>
-    <FormControl 
-    type="search"
-    placeholder="Rechercher patient"
-    aria-label="Search"
-    
-    />
-    <InputGroup.Text style={styles.inputGroup}>
-        <CiSearch />
-    </InputGroup.Text>
-    </InputGroup> 
-  </FormGroup>
+        <FormGroup controlId="formValidationSuccess2">
+            <InputGroup>
+        <FormControl 
+        type="search"
+        placeholder="Rechercher patient"
+        aria-label="Search"
+        
+        />
+        <InputGroup.Text style={styles.inputGroup}>
+            <CiSearch />
+        </InputGroup.Text>
+        </InputGroup> 
+        </FormGroup>
             </div>
           </Form>
           <Nav
             className="me-auto my-2 my-lg-0"
             navbarScroll
           >
-
-          </Nav>
-          <Link to="/ajouterPatient">
-            <CiCirclePlus style={{ color: 'black' }} size={50} />
+        </Nav>
+            <Link to="/ajouterPatient">
+                <CiCirclePlus style={{ color: 'black' }} size={50} />
             </Link>
       </Container>
     </Navbar>

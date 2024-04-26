@@ -12,7 +12,6 @@ function useBeds(idPatient) {
             const bedData = new Bed(response.data.idBed, response.data.patient, response.data.room);
             setBeds(bedData)
         } catch (error) {
-            console.log(error);
             console.log("erreur lors du chargement des lits");
         }
     }

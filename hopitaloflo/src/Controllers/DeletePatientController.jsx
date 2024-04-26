@@ -2,10 +2,11 @@ import deletePatient from "../Services/DeletePatient";
 
 const deletePatientController = async (idPatient) => {
     try {
-        deletePatient(idPatient)
+        return deletePatient(idPatient);
     } catch (error) {
         console.log("erreur lors de la suppression du patient");
+        throw error;
     }
- }
+}
 
- export default deletePatientController;
+export default deletePatientController;

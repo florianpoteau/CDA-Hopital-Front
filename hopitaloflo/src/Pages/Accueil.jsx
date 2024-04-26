@@ -10,9 +10,9 @@ const Accueil = () => {
     return (
         <>
             <Navigationbar />
-            <div className='col-md-2 col-6 mb-5 ms-3 ps-md-5 ms-md-5'>
+            <div className='col-md-2 col-6 mb-5 ms-5 ps-md-5 ms-md-5 '>
                 <Form.Select size="md" className='mt-5'>
-                    <option>Tout</option>
+                    <option>Rechercher par service</option>
                     <option>Urgence</option>
                     <option>Pédiatrie</option>
                     <option>Chirurgie</option>

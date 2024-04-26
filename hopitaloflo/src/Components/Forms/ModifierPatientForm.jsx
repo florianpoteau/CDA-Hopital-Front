@@ -6,9 +6,11 @@ import putPatientController from '../../Controllers/PutPatientController';
 import { useServices } from '../../Controllers/GetAllServiceController';
 import assignServiceController from '../../Controllers/AssignServiceController';
 import unAssignServiceController from '../../Controllers/UnAssignServiceController';
+import { useNavigate } from 'react-router-dom';
 
 const ModifierPatientForm = ({patient}) => {
 
+    const navigate = useNavigate();
     const services = useServices();
 
     const [idService, setIdService] = useState("");
@@ -28,13 +30,16 @@ const ModifierPatientForm = ({patient}) => {
 
             await putPatientController(updatedPatient);
             
-            if (idService) {
+            if(idService){
                 await assignServiceController(idService, updatedPatient);
-            } else {
-                await unAssignServiceController(updatedPatient);
+                navigate("/");
             }
-
-            console.log(updatedPatient);
+                
+            else{
+                await unAssignServiceController(updatedPatient);
+                navigate("/");
+            }
+            
 
         } catch (error) {
             console.log("Erreur lors de la modification du patient");
@@ -73,7 +78,7 @@ const ModifierPatientForm = ({patient}) => {
                 <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">
                     <Form.Label className='mt-3'></Form.Label>
                     <Form.Select onChange={(e) => setIdService(e.target.value)} className='p-3 text-secondary text-center'>
-                        <option value={null}>Aucun service</option>
+                        <option>Aucun service</option>
                         {services.map((service, index) => {
                             return <option key={index} value={service.idService}>{service.name}</option>;
                         })}

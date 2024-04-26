@@ -12,6 +12,7 @@ const CardPatients = ({ patient }) => {
     const handleDeletePatient = async () => {
         try {
             await deletePatientController(patient.idPatient);
+            window.location.reload();
         } catch (error) {
             console.error("Erreur lors de la suppression du patient :", error);
         }
@@ -27,9 +28,13 @@ const CardPatients = ({ patient }) => {
                 <Card.Text className='mb-4'>
                     Numéro de sécurité sociale: {patient.socialSecurityNumber}
                 </Card.Text>
-                {bed.room && bed.room.service && (
+                {bed.room && bed.room.service ? (
                     <Card.Text className='mb-4'>
                         Service: {bed.room.service.name}
+                    </Card.Text>
+                ) : (
+                    <Card.Text className='mb-4 text-muted'>
+                        Ce patient n'est pas assigné à un service.
                     </Card.Text>
                 )}
                 <div className='d-flex justify-content-between'>

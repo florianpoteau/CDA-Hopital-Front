@@ -5,7 +5,9 @@ class Patient {
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.socialSecurityNumber = socialSecurityNumber;
+
     }
 }
+
 
 export default Patient;

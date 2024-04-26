@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useServices } from '../../Controllers/GetAllServiceController';
 import postPatientController from '../../Controllers/PostPatientController';
 
 const AjouterPatientForm = () => {
 
-    const services = useServices();
-
-    const [idService, setIdService] = useState();
     const [firstName, setFirstname] = useState("");
     const [lastName, setLastname] = useState("");
     const [birthdate, setBirthDate] = useState("");
     const [socialSecurityNumber, setSocialSecurityNumber] = useState("");
 
-    const postPatientAndAssignService = async() => {
+    const postPatientAndAssignService = async () => {
     try {
         const updatedPatient = {
             firstName: firstName,
@@ -24,10 +20,11 @@ const AjouterPatientForm = () => {
             socialSecurityNumber: socialSecurityNumber
         };
 
-        await postPatientController(updatedPatient);
-        window.location.reload();
-        console.log(idService);
         console.log(updatedPatient);
+
+        await postPatientController(updatedPatient);
+        window.location.href = "/";
+
     } catch (error) {
         console.log("Erreur lors de l'ajout du patient");
     }
@@ -68,16 +65,8 @@ const AjouterPatientForm = () => {
                         <Form.Control onChange={(e) => setSocialSecurityNumber(e.target.value)} className='p-3 text-secondary' type="number" placeholder="Entrez le numéro de sécurité social" />
                     </Form.Group>
                 </FloatingLabel>
-                <Form.Group className="text-secondary col-10 col-md-4 mx-auto" controlId="exampleForm.ControlInputService">
-                        <Form.Label className='mt-3'></Form.Label>
-                        <Form.Select onChange={(e) => setIdService(e.target.value)} className='p-3 text-secondary text-center'>
-                            {services.map((service, index) => {
-                                return <option key={index} value={service.idService}>{service.name}</option>;
-                            })}
-                        </Form.Select>
-                    </Form.Group>
                 <div className='d-flex justify-content-center mt-5'>
-                   <Button onClick={postPatientAndAssignService} className='mt-4 p-2 col-5 col-md-3 pt-3 pb-3' style={styles.button}>Modifier</Button> 
+                   <Button onClick={postPatientAndAssignService} className='mt-4 p-2 col-5 col-md-3 pt-3 pb-3' style={styles.button}>Enregistrer</Button>
                 </div>
                 
             </Form>
