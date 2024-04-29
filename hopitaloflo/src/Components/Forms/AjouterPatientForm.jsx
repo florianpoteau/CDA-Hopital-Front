@@ -15,6 +15,10 @@ const AjouterPatientForm = () => {
 
     const postPatientAndAssignService = async () => {
     try {
+        if (!lastName || !firstName || !birthdate || !socialSecurityNumber) {
+            alert('Veuillez remplir tous les champs');
+            return;
+        } else{
         const updatedPatient = {
             firstName: firstName,
             lastName: lastName,
@@ -24,11 +28,13 @@ const AjouterPatientForm = () => {
 
         await postPatientController(updatedPatient);
         navigate("/");
-
+    }
     } catch (error) {
-        console.log("Erreur lors de l'ajout du patient");
+        alert("Erreur lors de l'ajout du patient")
     }
 }
+
+
 
     const styles = {
         button: {
@@ -55,7 +61,7 @@ const AjouterPatientForm = () => {
                 <FloatingLabel controlId="floatingInputBirthDate" label="Birthdate" className="text-secondary">
                     <Form.Group controlId="exampleForm.ControlInputBirthDate">
                         <Form.Label className='mt-3'></Form.Label>
-                        <Form.Control onChange={(e) => setBirthDate(e.target.value)} className='p-3 text-secondary' type="text" placeholder="Entrez la date de naissance du patient" />
+                        <Form.Control onChange={(e) => setBirthDate(e.target.value)} className='p-3 text-secondary' type="date" placeholder="Entrez la date de naissance du patient" />
                     </Form.Group>
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingInputSS" label="Numéro de sécurité social" className="text-secondary">

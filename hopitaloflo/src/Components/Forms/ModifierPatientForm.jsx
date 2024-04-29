@@ -20,6 +20,11 @@ const ModifierPatientForm = ({patient}) => {
 
     const putPatient = async () => {
         try {
+
+            if (!lastName || !firstName || !socialSecurityNumber) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            } else{
             const updatedPatient = {
                 idPatient: patient.idPatient,
                 firstName: firstName,
@@ -41,7 +46,7 @@ const ModifierPatientForm = ({patient}) => {
                 navigate("/");
             }
             
-
+        }
         } catch (error) {
             console.log("Erreur lors de la modification du patient");
         }
