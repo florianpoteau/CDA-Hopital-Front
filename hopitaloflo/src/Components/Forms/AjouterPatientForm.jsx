@@ -22,8 +22,6 @@ const AjouterPatientForm = () => {
             socialSecurityNumber: socialSecurityNumber
         };
 
-        console.log(updatedPatient);
-
         await postPatientController(updatedPatient);
         navigate("/");
 
@@ -31,7 +29,6 @@ const AjouterPatientForm = () => {
         console.log("Erreur lors de l'ajout du patient");
     }
 }
-
 
     const styles = {
         button: {
